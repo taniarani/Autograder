@@ -1,20 +1,19 @@
 .assignmentSub	.error-msg-text,
 .uploadError {
 		font-size: 14px;
-    line-height: 21px;
-    font-weight: 700;
-    padding-top: 0;
-    color: #cc4024;
+	    line-height: 21px;
+	    font-weight: 700;
+	    padding-top: 0;
+	    color: #cc4024;
     
 	}
 
-	.assignmentSub {
+.assignmentSub, .admin-role {
 		margin-left:15%;
 		margin-top:10%;
-		
 	}
 
-	.assignemtSub--heading {
+.assignemtSub--heading {
 		color:red;
 	}
 	
@@ -23,3 +22,14 @@
 	color:blue;
 	margin-left:46%;
 }
+
+.admin-role {
+	border :2px solid black;
+	width:50%;
+}
+
+
+
+
+
+
