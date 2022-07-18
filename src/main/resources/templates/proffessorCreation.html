@@ -24,45 +24,52 @@
 <div class="starter-template">
 	<div class="container-fluid">
   	<form   id="courseCreation" action="" enctype="multipart/form-data">
-    <div class="courseUpdate">
-    <h2 class="col-xs-12 assignemtSub--heading pb-4 mt-2">Create Course</h2>
-  	<div class="form-group row">
+    <div class="createStudent">
+    <h2 class="col-xs-12 assignemtSub--heading pb-4 mt-2 ml-2">Proffesor Creation</h2>
+    
+    <div class="form-group row editProffesor-form">
     <label for="name" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10 form-group-content">
  	<input type="hidden" name="name" class="getValue"
 									value=""  aria-hidden="true" />
     <input type="text" id="firstName" class="custom-valid-input restrictInput" name="firstName" pattern="[a-zA-Z0-9\s'-]+" placeholder="Name" maxlength="35" required="true" aria-label="name">	
 								<p class="error-msg-text" hidden="true">
-									Name is required</p>
+									First Name is required</p>
       
     </div>
-  </div>
-  
-  <div class="form-group row">
-    <label for="description" class="col-sm-2 col-form-label">Description</label>
-    <div class="col-sm-10 form-group-content">
- 	<input type="hidden" name="description" class="getValue"
-									value=""  aria-hidden="true" />
-    <input type="text" id="descrption" class="custom-valid-input restrictInput" name="description" pattern="[a-zA-Z0-9\s'-]+" placeholder="Description" maxlength="100" required="true" aria-label="description">	
-								<p class="error-msg-text" hidden="true">
-									Description is required</p>
     </div>
-  </div>
-  
-  <div class="form-group row">
-    <label for="name" class="col-sm-2 col-form-label">Course Coordinator</label>
+    
+    
+    <div class="form-group row editProffesor-form">
+    <label for="name" class="col-sm-2 col-form-label p-0">Module Coordinator</label>
     <div class="col-sm-10 form-group-content">
- 	<input type="hidden" name="name" class="getValue"
+ 	<input type="hidden" name="course" class="getValue"
 									value=""  aria-hidden="true" />
-     <select  id="courseCoordinator" class="custom-valid-input" name="course name"  aria-label="Course Name : select B.Tech, MCA, BCA">
+     <select  id="moduleCoordinator" class="custom-valid-input p-0" name="moduleCoordinator"  aria-label="Course Name : select B.Tech, MCA, BCA">
                 <option value="">Select</option>
-                <option value="Prof.Shukla">Prof.Shukla</option>
-		        <option value="Prof.Shukla">Prof.Raj</option>
+                <option value="OS">OS</option>
+		        <option value="Computer Networking">Computer Networking</option>
 		        </select>							
-		        <p class="error-msg-text" hidden="true">Course coordinator is required</p>
+		        <p class="error-msg-text" hidden="true">Module Coordinator is required</p>
       
     </div>
   </div>
+    
+  <div class="form-group row editProffesor-form">
+    <label for="name" class="col-sm-2 col-form-label p-0">Active Posting Allowed</label>
+    <div class="col-sm-10 form-group-content">
+ 	<input type="hidden" name="coordinator" class="getValue"
+									value=""  aria-hidden="true" />
+     <select  id="moduleCoordinator" class="custom-valid-input" name="module coordinator"  aria-label="module coordinator : select Yes, No">
+                <option value="">Select</option>
+                <option value="Yes">Yes</option>
+		        <option value="No">No</option>
+		        </select>							
+		        <p class="error-msg-text" hidden="true">This field is required</p>
+      
+    </div>
+  </div>
+  
   
 <div class="form-group row mt-5 ml-1">
                <button class="btn save mr-4 btn-primary " id="save" type="button">
@@ -71,11 +78,11 @@
 								<button class="btn btn-cancel mr-4 clear btn-secondary" id="clear" type="button">
 									Clear
 								</button>
-							<button class="btn btn-cancel cancel clear btn-secondary" id="cancel" type="button">
-								Cancel
-							</button>
+								<button class="btn btn-cancel mr-4 clear btn-secondary" id="clear" type="button">
+									Cancel
+								</button>
 						</div>
-      
+						
     </div>
   </div>
 </div>
@@ -89,11 +96,12 @@
 <script>
 let isValidAssignemnt = true;
 const formDetailsContent='.form-group-content';
-const namePattern = /^[a-zA-Z0-9-_ ']+$/;
+let emailValidation = true;
 
-const adminRoles = {
+
+const createStudent = {
 		submitForm() {
-			if(isValidAssignemnt){
+			if(isValidAssignemnt && emailValidation){
 			alert("Form is submitted");
 			$('#roleCreation').submit();
 			//$('#save').text('Resubmit');
@@ -125,19 +133,32 @@ const adminRoles = {
         $(this).removeClass('error-msg-textbox');
         
 }
+
+if(!emailValidation)	{
+	$('#emailId').siblings('.error-msg-text')
+          .attr('hidden', true);
+	$(this)
+          .parent()
+          .find('.invalid-emailError')
+          .attr('hidden', false);
+}
+else {
+	
+	$(this)
+          .siblings('.invalid-emailError')
+          .attr('hidden', true);
+}
     });
-    adminRoles.submitForm();
+    
+    createStudent.submitForm();
   },
+  
 resetFields() {
 	$('form :input').val('');
 	$('.custom-valid-input').siblings('.error-msg-text')
           .attr('hidden', true);
-},
-
-restrictInvalidCharacters(e, regex) {
-  var s = String.fromCharCode(e.which);
-  if (regex.test(s)) return true;
-  else return false;
+     $('.custom-valid-input').siblings('.invalid-emailError')
+          .attr('hidden', true);
 },
 
 getValues() {
@@ -147,24 +168,27 @@ getValues() {
       .find('.getValue').val(getData);
 },
 
-invalidCharacters(e) {
-    var regExp = new RegExp("^[a-zA-Z 0-9'-]+$");
-    return adminRoles.restrictInvalidCharacters(e, regExp);
-  },
+validateEmailId() {
+   emailValidation = true;
+   const email = $('#emailId').val();
+   const emailPattern = /^([a-zA-Z\d.+-]+)@([a-zA-Z\d-]+)\.([a-zA-Z]{2,8})(\.[a-zA-Z]{2,8})?$/;
+   const emailId = email.match(emailPattern);
+  if (emailId === null && email !== '') {
+	emailValidation = false;
+}
+return emailValidation;
+},
 		
 init() {
 $(document).on('click', '#save', this.validateInput);
 $(document).on('click', '.clear', this.resetFields);
 $(document).on('change', '.custom-valid-input', this.getValues);
-$(document).on(
-    'keypress',
-    '.restrictInput',
-    this.invalidCharacters
-  );
+$(document).on('input', '#emailId', this.validateEmailId);
+
 },
 
 };
-adminRoles.init();
+createStudent.init();
 
 </script>
 <!-- //<script src="scripts/studentSubmission.js"></script> -->

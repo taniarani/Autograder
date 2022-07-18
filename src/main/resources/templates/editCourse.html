@@ -12,61 +12,86 @@
 	th:href="@{/css/student_assignment.css}"/>
 
 </head>
-
 <body>
 
+<main role="main" class="container">
+<header>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">AutoGrader</a>
 </nav>
+</header>
 
-<main role="main" class="container">
+<div class="starter-template">
+	<div class="container-fluid">
+  	<form   id="courseCreation" action="" enctype="multipart/form-data">
+    <div class="courseUpdate">
+    <h2 class="col-xs-12 assignemtSub--heading pb-4 mt-2">Edit Course</h2>
+  	<div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10 form-group-content">
+ 	<input type="hidden" name="name" class="getValue"
+									value=""  aria-hidden="true" />
+    <input type="text" id="firstName" class="custom-valid-input restrictInput" name="firstName" pattern="[a-zA-Z0-9\s'-]+" placeholder="Name" maxlength="35" required="true" aria-label="name">	
+								<p class="error-msg-text" hidden="true">
+									Name is required</p>
+      
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="description" class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10 form-group-content">
+ 	<input type="hidden" name="description" class="getValue"
+									value=""  aria-hidden="true" />
+    <input type="text" id="descrption" class="custom-valid-input restrictInput" name="description" pattern="[a-zA-Z0-9\s'-]+" placeholder="Description" maxlength="100" required="true" aria-label="description">	
+								<p class="error-msg-text" hidden="true">
+									Description is required</p>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="name" class="col-sm-2 col-form-label">Course Coordinator</label>
+    <div class="col-sm-10 form-group-content">
+ 	<input type="hidden" name="name" class="getValue"
+									value=""  aria-hidden="true" />
+     <select  id="courseCoordinator" class="custom-valid-input" name="course name"  aria-label="Course Name : select B.Tech, MCA, BCA">
+                <option value="">Select</option>
+                <option value="Prof.Shukla">Prof.Shukla</option>
+		        <option value="Prof.Shukla">Prof.Raj</option>
+		        </select>							
+		        <p class="error-msg-text" hidden="true">Course coordinator is required</p>
+      
+    </div>
+  </div>
+  
+<div class="form-group row mt-5 ml-1">
+               <button class="btn save mr-4 btn-primary " id="save" type="button">
+									Update
+								</button>
+								<button class="btn btn-cancel mr-4 clear btn-secondary" id="clear" type="button">
+									Clear
+								</button>
+							<button class="btn btn-cancel cancel clear btn-secondary" id="cancel" type="button">
+								Cancel
+							</button>
+						</div>
+      
+    </div>
+  </div>
+</div>
 
-    <div class="starter-template adminRoles">
-    <div class="container-fluid admin-role">
-	<h2 class="col-xs-12 assignemtSub--heading pb-4 mt-2">Review Role</h2>
-  <table class="mb-5" style="width:100%">
-  <tr>
-    <th>ID</th>
-    <th>NAME</th> 
-    <th>DESC</th>
-	<th>ACTION</th>
-  </tr>
-  <tr>
-	<td>1</td>
-    <td>Professor</td>
-    <td>Professor</td>
-    <td><a href="">Delete</a>|<a href="">Update</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Professor</td>
-    <td>Professor</td>
-    <td><a href="">Delete</a>|<a href="">Update</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Professor</td>
-    <td>Professor</td>
-    <td><a href="">Delete</a>|<a href="">Update</td>
-  </tr>
-</table>
-    
- 
-    
+  </form>
 </main>
 <!-- /.container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
 <script>
-
-
 let isValidAssignemnt = true;
 const formDetailsContent='.form-group-content';
 const namePattern = /^[a-zA-Z0-9-_ ']+$/;
 
 const adminRoles = {
-	
 		submitForm() {
 			if(isValidAssignemnt){
 			alert("Form is submitted");
@@ -103,15 +128,10 @@ const adminRoles = {
     });
     adminRoles.submitForm();
   },
-  
-  
-
 resetFields() {
 	$('form :input').val('');
 	$('.custom-valid-input').siblings('.error-msg-text')
           .attr('hidden', true);
-		
-	
 },
 
 restrictInvalidCharacters(e, regex) {
@@ -119,7 +139,6 @@ restrictInvalidCharacters(e, regex) {
   if (regex.test(s)) return true;
   else return false;
 },
-
 
 getValues() {
 	var getData=$(this).val();
@@ -148,10 +167,6 @@ $(document).on(
 adminRoles.init();
 
 </script>
-
-
-<script src="scripts/studentSubmission.js"></script>
-
-
+<!-- //<script src="scripts/studentSubmission.js"></script> -->
 </body>
 </html>
