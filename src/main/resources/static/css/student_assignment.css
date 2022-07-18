@@ -1,3 +1,7 @@
+.starter-template {
+	margin-top:94px;
+}
+
 .assignmentSub	.error-msg-text,
 .uploadError {
 		font-size: 14px;
@@ -25,7 +29,7 @@
 
 .admin-role {
 	border :2px solid black;
-	width:50%;
+	width  :50%;
 }
 
 table, th, td {
@@ -33,7 +37,57 @@ table, th, td {
   border-collapse: collapse;
 }
 
+table {
+	empty-cells: show;
+}
 
+.courseUpdate,
+.loginPage,
+.createStudent {
+	    border: 2px solid black;
+    	padding-left: 35px;
+}
+
+.welcomeAdmin {
+   margin-left: 30px;
+   padding: 20px 30px;
+   border: 2px solid black;
+}
+
+.welcomeAdmin tr {
+	white-space:nowrap;
+}
+
+.welcomeAdmin a {
+	padding:5px;
+}
+
+.container-admin {
+	padding:0;
+	margin:0;
+}
+
+.container-admin .headerElements {
+	transform: translateY(12px);
+    margin: 9%;
+	color:red;
+}
+
+.emptycell {
+	text-align: center;
+}
+
+.emptycell .deleteData {
+	color:#007bff !important;
+}
+
+.reviewCourse .admin-role {
+	width:60%;
+}
+
+.editProffesor-form {
+	padding-left:18px;
+}
 
 
 
