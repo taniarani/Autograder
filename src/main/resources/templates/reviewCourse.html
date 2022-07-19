@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Welcome to AutoGrade Home Page</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link rel="stylesheet"
+	th:href="@{/css/student_assignment.css}"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">AutoGrader</a>
+</nav>
+
+<main role="main" class="container">
+
+    <div class="starter-template adminRoles reviewCourse">
+    
+    <div class="container-fluid admin-role"  style="width:auto">
+	<h2 class="col-xs-12 assignemtSub--heading pb-4 mt-2">Review Course</h2>
+  <table class="mb-5 emptycell" style="width:100%">
+  <tr>
+    <th>ID</th>
+    <th>NAME</th> 
+	<th>DESCRIPTION</th>
+	<th>COURSE COORDINATOR</th>
+	<th>ACTION</th>
+	
+  </tr>
+  
+  <tr>
+	<td>1</td>
+	<td>CS</td>
+    <td>Computer Science</td>
+    <td>Adam</td>
+    <td><a href="">Edit</a>|<a class="deleteData">Delete</a></td>
+  </tr>
+  
+ <tr>
+	<td>12</td>
+	<td>HR</td>
+    <td>Human Resources</td>
+    <td>Maccy</td>
+    <td><a href="">Edit</a>|<a class="deleteData">Delete</a></td>
+  </tr>
+  
+  <tr>
+	<td>14</td>
+	<td>CN</td>
+    <td>Computer Networks</td>
+    <td>Adam</td>
+    <td><a href="">Edit</a>|<a class="deleteData">Delete</a></td>
+  </tr>
+  
+</table>
+
+<div class="form-group mt-5 ml-1" align="right">
+<button class="btn btn-cancel btn-secondary"  align="right" type="button">
+									Cancel
+								</button>
+</div>
+
+<!-- The Modal -->
+<div id="removePopup"class="modal" style="display:none">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close closePopup">&times;</span>
+    <h4 class="text-center">Are you sure want to Delete this?</h4>
+    <div class="form-group mt-5 ml-1" align="right">
+               <button class="btn save mr-4 btn-primary closePopup" type="button">
+									Yes
+								</button>
+								<button class="btn btn-cancel mr-4 clear btn-secondary closePopup" type="button">
+									No
+								</button>
+						</div>
+  </div>
+
+</div>
+
+ 
+</main>
+<!-- /.container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+<script>
+
+var modal = document.getElementById("removePopup");
+
+const reviewCourse = {
+	
+removePopup() {
+var btn = document.getElementsByClassName("deleteData");
+ modal.style.display = "block";
+	},
+	
+closePopup() {
+		modal.style.display = "none";
+	},
+	init() {
+		$(document).on('click', '.deleteData', this.removePopup);
+		$(document).on('click', '.closePopup', this.closePopup);
+		},
+		}
+		reviewCourse.init();
+
+
+</script>
+
+
+</body>
+</html>
