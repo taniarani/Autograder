@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Welcome to AutoGrade Home Page</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/student_assignment.css}" />
+
+</head>
+
+<body>
+
+    <main role="main" class="container">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand" href="#">AutoGrader</a>
+            </nav>
+        </header>
+
+        <form id="reviewStudent" action="" enctype="multipart/form-data">
+            <div class="starter-template">
+                <div class="container-fluid">
+                    <div class="reviewStudent">
+                        <h2 class="col-xs-12 assignemtSub--heading pb-4 mt-2">Review Student Assignment</h2>
+                        <h3 class="mt-2 pb-4">Welcone John,</h3>
+
+                        <div class="form-group row">
+                            <label for="course" class="col-sm-2 col-form-label">Course</label>
+                            <div class="col-sm-10 form-group-content">
+                                <input type="text" name="course" aria-label="course">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">Module</label>
+                            <div class="col-sm-10 form-group-content">
+                                <input type="text" id="module" name="module" aria-label="module">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="assignment" class="col-sm-2 col-form-label">Assignment</label>
+                            <div class="col-sm-10 form-group-content">
+                                <input type="text" aria-label="assignment" class="custom-valid-input" name="lastName" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="assignment" class="col-sm-2 col-form-label">Assignment</label>
+                            <div class="col-sm-10 form-group-content">
+                                <input type="text" aria-label="assignment" class="custom-valid-input" name="assignment" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="assignment" class="col-sm-2 col-form-label pr-0">Assignment Marked?</label>
+                            <div class="col-sm-10 form-group-content">
+                                <input type="number" aria-label="assignment marked" class="custom-valid-input" name="assignment marked" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="assignment" class="col-sm-2 col-form-label">Marks obtained</label>
+                            <div class="col-sm-10 form-group-content">
+                                <input type="number" aria-label="assignment marked" class="custom-valid-input" name="marks obtained" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="assignment" class="col-sm-2 col-form-label">Checked Date</label>
+                            <div class="col-sm-10 form-group-content">
+                                <input type="number" aria-label="checked date" class="custom-valid-input" name="checked date" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="assignment" class="col-sm-2 col-form-label">Comment</label>
+                            <div class="col-sm-10 form-group-content">
+                                <input type="text" aria-label="comment" class="custom-valid-input" name="comment" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="assignment" class="col-sm-2 col-form-label">Marked By</label>
+                            <div class="col-sm-10 form-group-content">
+                                <input type="text" aria-label="comment" class="custom-valid-input" name="comment" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-5 ml-1">
+                            <a href="javascript:window.history.back()" title="Cancel">
+                                <button class="btn btn-cancel mr-4 clear btn-secondary" id="cancel" type="button">Cancel</button>
+                            </a>
+
+                            <a href="javascript:void(0)" class="show-testCases" title="Cancel">
+                            	Review Assignment Test Cases
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testCases-tabular" hidden>
+                    <h2 class="col-xs-12 assignemtSub--heading pb-4 mt-2">Review Student Assignment Test Cases</h2>
+                    <div class="form-group mt-3">
+                        <table class="emptycell" style="width: 100%;">
+                            <tr>
+                                <th>Test Case Id</th>
+                                <th>Passed?</th>
+                                <th>Expected Output</th>
+                                <th>Observed Output</th>
+                                <th>Marks Obtained</th>
+                                <th>Comment</th>
+                            </tr>
+
+                            <tr class="blank_row">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr class="blank_row">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr class="blank_row">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div class="form-group">
+                    <a href="javascript:void(0)" class="show-testCases" title="Cancel">
+                        <button class="btn btn-cancel  btn-secondary" id="cancel" type="button">Cancel</button>
+                     </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </main>
+    <!-- /.container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+
+    <script>
+        const reviewTabular = '.show-testCases';
+
+        $(reviewTabular).click(function() {
+            $('.testCases-tabular').attr('hidden', false);
+            $('.reviewStudent').attr('hidden', true);
+        });
+    </script>
+    <!-- //<script src="scripts/studentSubmission.js"></script> -->
+</body>
+
+</html>
